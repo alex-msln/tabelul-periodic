@@ -142,9 +142,9 @@
 }
 
 .eleNum, .eleSym, .eleNm, .eleWt {
-  font-size: 0.7rem;
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-top: 0% !important;
 }
 
         @keyframes fadeInTable {
