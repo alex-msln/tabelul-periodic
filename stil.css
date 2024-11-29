@@ -141,37 +141,16 @@
 }
 
 /* Elemente individuale din tabel */
-#ptable .elements {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: clamp(0.8rem, 3vw, 1.5rem); /* Scalare automată pe baza viewport-ului */
-  padding: 5px;
-  box-sizing: border-box;
-}
+
 
 /* Responsivitate pentru dimensiuni mici */
-@media screen and (max-width: 768px) {
-  #ptable {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Ajustare automată pe lățimi mai mici */
-  }
 
-  #ptable .elements {
-    font-size: clamp(0.8rem, 4vw, 1rem); /* Mai mic pentru telefoane */
-  }
-}
-@media screen and (max-width: 768px) {
-    #ptable {
-        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    }
-}
+
+
 .eleNum, .eleSym, .eleNm, .eleWt {
   margin: 0 !important;
   padding: 0 !important;
   padding-top: 0% !important;
-  display:block !important;;
 }
 
 
