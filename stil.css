@@ -132,7 +132,6 @@
 
 #ptable {
   display: grid;
-  grid-template-columns: repeat(18, minmax(50px, 1fr)); /* Coloană flexibilă */
   gap: 5px;
   width: 100%;
   overflow-x: auto; /* Asigură scrolling-ul orizontal */
@@ -141,11 +140,15 @@
 }
 
 /* Elemente individuale din tabel */
-
-
-/* Responsivitate pentru dimensiuni mici */
-
-
+#ptable .elements {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+  box-sizing: border-box;
+}
 
 .eleNum, .eleSym, .eleNm, .eleWt {
   margin: 0 !important;
