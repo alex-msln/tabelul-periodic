@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elemente Chimice Fascinante</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Navbar Styling */
+        .navbar {
+            background: rgba(255, 255, 255, 0.8); 
+            border-bottom: 1px solid rgba(200, 200, 200, 0.5); 
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px); 
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px; 
+        }
+
+        .nav-item {
+            font-size: 1rem;
+            color: #555;
+            text-decoration: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background: rgba(0, 0, 0, 0.05); 
+            color: #222;
+        }
+
+        .nav-item:active {
+            background: rgba(0, 0, 0, 0.1); 
+            color: #000;
+        }
+
+        /* Body și container */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 80px; /* Spațiu pentru navbar */
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .animate-reveal {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .animate-pulse-hover:hover {
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Stilizare carduri */
+        .element-card {
+            transition: all 0.3s ease;
+            padding: 24px;
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            position: relative;
+            overflow: hidden;
+            width: 280px; /* Dimensiune fixă pentru carduri */
+        }
+
+        .element-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5));
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .element-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .element-card h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .element-card p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* Culoare borderele pentru carduri */
+        .element-card.bg-blue { border-left: 5px solid #3498db; }
+        .element-card.bg-green { border-left: 5px solid #2ecc71; }
+        .element-card.bg-red { border-left: 5px solid #e74c3c; }
+        .element-card.bg-purple { border-left: 5px solid #9b59b6; }
+        .element-card.bg-yellow { border-left: 5px solid #f39c12; }
+        .element-card.bg-orange { border-left: 5px solid #e67e22; }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="nav-logo">Tabel Periodic</div>
+            <nav class="nav-links">
+                <a href="index.html?lang=ro" class="nav-item">Acasă</a>
+                <a href="quiz.html?lang=ro" class="nav-item">Quiz</a>
+                <a href="DS.html?lang=ro" class="nav-item">Despre Sănătate</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Content Area -->
+    <div class="content animate-reveal">
+        <div class="element-card bg-blue animate-pulse-hover">
+            <h2>Zinc (Zn)</h2>
+            <p>
+                Fun fact: Zincul este esențial pentru menținerea unui sistem imunitar puternic. De fapt, o doză adecvată de zinc poate reduce durata răcelii și poate ajuta la recuperarea mai rapidă în cazul unor infecții.
+            </p>
+        </div>
+
+        <div class="element-card bg-orange animate-pulse-hover">
+            <h2>Cupru (Cu)</h2>
+            <p>
+                Fun fact: Cuprul ajută la formarea colagenului, un component important al pielii și articulațiilor, și joacă un rol în menținerea sănătății vaselor de sânge și a țesutului nervos.
+            </p>
+        </div>
+
+        <div class="element-card bg-green animate-pulse-hover">
+            <h2>Magneziu (Mg)</h2>
+            <p>
+                Fun fact: Magneziul este cunoscut pentru efectele sale calmante, fiind folosit adesea pentru a ajuta la reducerea stresului și pentru îmbunătățirea calității somnului, având un impact pozitiv asupra sistemului nervos.
+            </p>
+        </div>
+
+        <div class="element-card bg-purple animate-pulse-hover">
+            <h2>Mangan (Mn)</h2>
+            <p>
+                Fun fact: Manganul este important pentru sănătatea oaselor și a țesuturilor conjunctive. Acesta contribuie la formarea cartilajului și a oaselor și este necesar pentru metabolizarea carbohidraților și grăsimilor.
+            </p>
+        </div>
+
+        <div class="element-card bg-yellow animate-pulse-hover">
+            <h2>Iod (I)</h2>
+            <p>
+                Fun fact: Iodul este esențial pentru funcționarea corectă a glandei tiroide. Deficitul de iod poate duce la probleme precum gușa, iar un aport adecvat sprijină metabolismul și reglează energia corpului.
+            </p>
+        </div>
+
+        <div class="element-card bg-blue animate-pulse-hover">
+            <h2>Carbon (C)</h2>
+            <p>
+                Fun fact: Deși nu este un nutrient esențial direct în alimentație, carbonul este componentul principal al moleculelor organice din corpul nostru, inclusiv al ADN-ului, proteinelor și carbohidraților.
+            </p>
+        </div>
+
+        <div class="element-card bg-red animate-pulse-hover">
+            <h2>Fier (Fe)</h2>
+            <p>
+                Fun fact: Fierul este crucial pentru transportul oxigenului în sânge, iar un deficit de fier poate duce la anemie. Prin urmare, consumul de fier sprijină energia și performanța fizică generală.
+            </p>
+        </div>
+
+        <div class="element-card bg-orange animate-pulse-hover">
+            <h2>Potasiu (K)</h2>
+            <p>
+                Fun fact: Potasiul ajută la menținerea unei tensiuni arteriale sănătoase și susține funcționarea corectă a mușchilor și a inimii, prevenind crampe musculare și aritmii.
+            </p>
+        </div>
+
+        <div class="element-card bg-yellow animate-pulse-hover">
+            <h2>Calciu (Ca)</h2>
+            <p>
+                Fun fact: Calciul este esențial pentru sănătatea oaselor și a dinților, iar un aport adecvat poate reduce riscul de osteoporoză pe măsură ce îmbătrânim, contribuind la prevenirea fracturilor.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
