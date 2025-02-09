@@ -1,403 +1,489 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elements: The Periodic Table</title>
-    <!-- Keep existing navigation styling -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #fafafa ; /* Light gray */
-            color: #333;
-            line-height: 1.6;
-        }
-         .navbar {
-  background: rgba(255, 255, 255, 0.8); /* Fundal alb semi-transparent */
-  border-bottom: 1px solid rgba(200, 200, 200, 0.5); /* Linie discretă */
-  padding: 5px 20px;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px); /* Efect de blur pe fundal */
-
-}
-
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-
-}
-
-.nav-logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px; /* Spațiu între linkuri */
-
-}
-
-.nav-item {
-
-  font-size: 1rem;
-  color: #555;
-  text-decoration: none;
-  padding: 5px 15px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-.nav-item:hover {
-  background: rgba(0, 0, 0, 0.05); /* Fundal gri deschis la hover */
-  color: #222; /* Text mai închis */
-}
-
-.nav-item:active {
-  background: rgba(0, 0, 0, 0.1); /* Fundal mai pronunțat la clic */
-  color: #000;
-}
-        :root {
-            --primary-color: #007bff;
-            --secondary-color: #6c757d;
-            --success-color: #28a745;
-            --danger-color: #dc3545;
-        }
-
-        .body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-
-        }
-
-        .content-wrapper {
-            margin-top: 60px;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .timer {
-            text-align: right;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .question-container {
-            margin-bottom: 2rem;
-            padding: 1rem;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-        }
-
-        .question {
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .option {
-            padding: 0.75rem 1rem;
-            border: 1px solid #dee2e6;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .option:hover {
-            background-color: #f8f9fa;
-        }
-
-        .option.selected {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .option.correct {
-            background-color: var(--success-color);
-            color: white;
-        }
-
-        .option.incorrect {
-            background-color: var(--danger-color);
-            color: white;
-        }
-
-        button {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-top: 2rem;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .result {
-            display: none;
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 1rem;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .stat-label {
-            color: var(--secondary-color);
-        }
-
-        .heavyFont {
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chestionar de Chimie</title>
+  <style>
+    /* Global Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fafafa; /* Light gray background like the first example */
+      color: #333;
+    }
+    /* Navbar Styles (inspired by the first HTML) */
+    .navbar {
+      background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+      border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+      padding: 5px 20px;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+    }
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .nav-item {
+      font-size: 1rem;
+      color: #555;
+      text-decoration: none;
+      padding: 5px 15px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    .nav-item:hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: #222;
+    }
+    .nav-item:active {
+      background: rgba(0, 0, 0, 0.1);
+      color: #000;
+    }
+    /* Layout Styles (from the second site) */
+    #container {
+      display: flex;
+      min-height: calc(100vh - 60px); /* Adjust for navbar height */
+    }
+    #sidebar {
+      width: 260px;
+      background: #fff;
+      border-right: 1px solid #e0e0e0;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    #sidebar h2 {
+      font-size: 1.4em;
+      text-align: center;
+      margin-bottom: 15px;
+      color: #007bff; /* Primary color from the first snippet */
+    }
+    .domain {
+      background: #e8f0fe;
+      padding: 12px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .domain:hover {
+      background: #d0e3fd;
+    }
+    .subdomains {
+      margin-left: 10px;
+      margin-bottom: 10px;
+      display: none;
+    }
+    .subdomain {
+      background: #f1f4f9;
+      padding: 10px;
+      border-radius: 4px;
+      margin: 6px 0;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .subdomain:hover {
+      background: #e2e8f0;
+    }
+    #content {
+      flex: 1;
+      padding: 30px;
+      background: #fafafa;
+    }
+    #content h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+    .question-block {
+      background: #fff;
+      padding: 18px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      border-left: 5px solid #007bff;
+    }
+    .question-block p {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+    .question-block ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .question-block li {
+      margin-bottom: 8px;
+    }
+    .question-block label {
+      display: block;
+      padding: 8px;
+      border: 1px solid #dfe4ea;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .question-block label:hover {
+      background: #f1f3f5;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 1em;
+      color: #333;
+      background: #fff;
+    }
+    .special-input {
+      background: #e7f0fd;
+      color: #333;
+    }
+    .btn {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 4px;
+      width: 100%;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+    #results {
+      margin-top: 30px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+    #results p {
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+    @media (max-width: 768px) {
+      #container {
+        flex-direction: column;
+      }
+      #sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+      }
+    }
+  </style>
 </head>
 <body>
- 
-<header class="navbar">
-  <div class="navbar-container">
-    <div class="nav-logo">TABEL PERIODIC</div>
-        <nav class="nav-links">
-    <a href="index.html?lang=ro" class="nav-item" style="text-transform: none;">Acasă</a>
-    <a href="quiz.html?lang=ro" class="nav-item" style="text-transform: none;">Quiz</a>
-    <a href="DS.html?lang=ro" class="nav-item" style="text-transform: none;">Despre Sănătate</a>
-</nav>
-  </div>
-</header>
-       
-    <!-- Content wrapper -->
-    <div class="content-wrapper">
-        <div class="container">
-            <div class="header">
-                <h1 id="quiz-chimie" class="animate__animated animate__fadeIn">Quiz Chimie</h1>
-                <div class="timer">
-                    ⏱ <span id="time">05:00</span>
-                </div>
-            </div>
-
-            <div id="quiz">
-                <div class="question-container" question="1">
-                    <div class="question">
-                        1. Care este simbolul chimic pentru Sodiu?
-                    </div>
-                    <div class="options">
-                        <div class="option" data-correct="false">So</div>
-                        <div class="option" data-correct="true">Na</div>
-                        <div class="option" data-correct="false">Sd</div>
-                        <div class="option" data-correct="false">S</div>
-                    </div>
-                </div>
-
-                <div class="question-container" question="2">
-                    <div class="question">
-                        2. Ce este un atom?
-                    </div>
-                    <div class="options">
-                        <div class="option" data-correct="false">O moleculă de apă</div>
-                        <div class="option" data-correct="true">Cea mai mică particulă a unui element chimic</div>
-                        <div class="option" data-correct="false">Un compus chimic</div>
-                        <div class="option" data-correct="false">O reacție chimică</div>
-                    </div>
-                </div>
-
-                <div class="question-container" question="3">
-                    <div class="question">
-                        3. Formula chimică a apei este:
-                    </div>
-                    <div class="options">
-                        <div class="option" data-correct="false">CO₂</div>
-                        <div class="option" data-correct="true">H₂O</div>
-                        <div class="option" data-correct="false">O₂</div>
-                        <div class="option" data-correct="false">H₂O₂</div>
-                    </div>
-                </div>
-
-                <div class="question-container" question="4">
-                    <div class="question">
-                        4. pH-ul reprezintă:
-                    </div>
-                    <div class="options">
-                        <div class="option" data-correct="false">O unitate de măsură pentru temperatură</div>
-                        <div class="option" data-correct="true">O scară care măsoară aciditatea sau bazicitatea</div>
-                        <div class="option" data-correct="false">O metodă de separare</div>
-                        <div class="option" data-correct="false">Un element chimic</div>
-                    </div>
-                </div>
-
-                <div class="question-container" question="5">
-                    <div class="question">
-                        5. Numărul atomic al Carbonului este:
-                    </div>
-                    <div class="options">
-                        <div class="option" data-correct="false">8</div>
-                        <div class="option" data-correct="true">6</div>
-                        <div class="option" data-correct="false">12</div>
-                        <div class="option" data-correct="false">4</div>
-                    </div>
-                </div>
-
-                <button id="check-answers">Verifică Răspunsurile</button>
-            </div>
-
-            <div id="result" class="result">
-                <div class="stats">
-                    <div class="stat-item">
-                        <div id="score-value" class="stat-value">0</div>
-                        <div class="stat-label">Nota</div>
-                    </div>
-                    <div class="stat-item">
-                        <div id="correct-answers" class="stat-value">0/5</div>
-                        <div class="stat-label">Răspunsuri Corecte</div>
-                    </div>
-                    <div class="stat-item">
-                        <div id="time-taken" class="stat-value">00:00</div>
-                        <div class="stat-label">Timp</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Navbar implemented using styles from the first HTML snippet -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <div class="nav-logo">Chestionar de Chimie</div>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-item">Acasă</a>
+        <a href="quiz.html" class="nav-item">Quiz</a>
+        <a href="despre.html" class="nav-item">Despre</a>
+      </nav>
     </div>
+  </header>
+  <!-- Main Container -->
+  <div id="container">
+    <!-- Sidebar: Domenii & subdomenii -->
+    <div id="sidebar">
+      <h2>Domenii</h2>
+      <div id="domainList"></div>
+    </div>
+    <!-- Content Area -->
+    <div id="content">
+      <h2>Exercițiu</h2>
+      <div id="quizContainer">
+        <p style="text-align:center; color:#666;">Selectați un subdomeniu din stânga pentru a începe exercițiul.</p>
+      </div>
+      <button id="verifyBtn" class="btn" style="display:none;">Verifică răspunsurile</button>
+      <div id="results"></div>
+    </div>
+  </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let timeLeft = 300; // 5 minutes in seconds
-            let timer = null;
-            let quizStarted = false;
-            const options = document.querySelectorAll('.option');
-            const checkButton = document.getElementById('check-answers');
-            const resultDiv = document.getElementById('result');
-            const timeDisplay = document.getElementById('time');
-            let startTime;
-
-            function updateTimer() {
-                const minutes = Math.floor(timeLeft / 60);
-                const seconds = timeLeft % 60;
-                timeDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-                
-                if (timeLeft === 0) {
-                    clearInterval(timer);
-                    checkAnswers();
-                } else {
-                    timeLeft--;
-                }
-            }
-
-            function startQuiz() {
-                if (!quizStarted) {
-                    quizStarted = true;
-                    startTime = Date.now();
-                    timer = setInterval(updateTimer, 1000);
-                }
-            }
-
-            options.forEach(option => {
-                option.addEventListener('click', function() {
-                    startQuiz();
-                    // Remove selected class from siblings
-                    const siblings = option.parentElement.children;
-                    for (let sibling of siblings) {
-                        sibling.classList.remove('selected');
-                    }
-                    option.classList.add('selected');
-                });
-            });
-
-            function calculateScore(correct) {
-                return Math.round((correct / 5) * 10);
-            }
-
-            function getTimeTaken() {
-                const endTime = Date.now();
-                const timeTaken = Math.floor((endTime - startTime) / 1000);
-                const minutes = Math.floor(timeTaken / 60);
-                const seconds = timeTaken % 60;
-                return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            }
-
-            function checkAnswers() {
-                clearInterval(timer);
-                let correctCount = 0;
-
-                options.forEach(option => {
-                    option.style.pointerEvents = 'none';
-                    if (option.classList.contains('selected')) {
-                        if (option.getAttribute('data-correct') === 'true') {
-                            option.classList.add('correct');
-                            correctCount++;
-                        } else {
-                            option.classList.add('incorrect');
-                        }
-                    }
-                    if (option.getAttribute('data-correct') === 'true') {
-                        option.classList.add('correct');
-                    }
-                });
-
-                checkButton.style.display = 'none';
-                resultDiv.style.display = 'block';
-                
-                document.getElementById('score-value').textContent = calculateScore(correctCount);
-                document.getElementById('correct-answers').textContent = `${correctCount}/5`;
-                document.getElementById('time-taken').textContent = getTimeTaken();
-            }
-
-            checkButton.addEventListener('click', checkAnswers);
+  <script>
+    // Helper function to check answers
+    function isCorrectAnswer(userAns, correct) {
+      userAns = userAns.trim().toLowerCase();
+      if (typeof correct === "string") {
+        return userAns === correct.trim().toLowerCase();
+      } else if (Array.isArray(correct)) {
+        return correct.some(ans => userAns === ans.trim().toLowerCase());
+      }
+      return false;
+    }
+    
+    // Quiz Data structure
+    const quizData = [
+      {
+        domain: "Chimie Generală",
+        subdomains: [
+          {
+            subdomain: "Completarea spațiilor libere",
+            questions: [
+              {
+                question: "1. Simbolul chimic al oxigenului este ____. ",
+                type: "text",
+                answer: "O",
+                explanation: "Simbolul chimic al oxigenului este O."
+              },
+              {
+                question: "2. Masa atomică a carbonului este aproximativ ____ unități de masă atomică.",
+                type: "text",
+                answer: "12",
+                explanation: "Masa atomică a carbonului este aproximativ 12."
+              },
+              {
+                question: "3. Apa este formată din ____ atomi de hidrogen și ____ atom de oxigen.",
+                type: "text-multi",
+                answer: [
+                  ["2", "doi", "Doi"],
+                  ["1", "un", "Un"]
+                ],
+                explanation: "Apa (H₂O) este formată din 2 atomi de hidrogen și 1 atom de oxigen."
+              },
+              {
+                question: "4. Formula chimică a acidului sulfuric este ____. ",
+                type: "text",
+                answer: "H2SO4",
+                explanation: "Formula acidului sulfuric este H₂SO₄."
+              },
+              {
+                question: "5. Protonii au sarcină __, iar electronii au sarcină __.",
+                type: "text-multi",
+                answer: [
+                  ["pozitiv", "pozitivă"],
+                  ["negativ", "negativă"]
+                ],
+                explanation: "Protonii au sarcină pozitivă, iar electronii au sarcină negativă."
+              }
+            ]
+          },
+          {
+            subdomain: "Alege răspunsul corect",
+            questions: [
+              {
+                question: "6. Care dintre următoarele substanțe este un compus?",
+                type: "mc",
+                options: ["Fier", "Oxigen", "Apă", "Aur"],
+                answer: "Apă",
+                explanation: "Apă este un compus, pe când celelalte sunt elemente."
+              },
+              {
+                question: "7. Ce tip de legătură chimică există în molecula de sare (NaCl)?",
+                type: "mc",
+                options: ["Covalentă", "Ionică", "Metalică", "Van der Waals"],
+                answer: "Ionică",
+                explanation: "Legătura din NaCl este de tip ionic."
+              },
+              {
+                question: "8. Ce reprezintă pH-ul unei soluții?",
+                type: "mc",
+                options: [
+                  "Concentrația de protoni",
+                  "Cantitatea de precipitat format",
+                  "Numărul de electroni liberi",
+                  "Viteza unei reacții chimice"
+                ],
+                answer: "Concentrația de protoni",
+                explanation: "pH-ul măsoară concentrația ionilor de hidrogen (protoni) din soluție."
+              }
+            ]
+          },
+          {
+            subdomain: "Adevărat sau fals",
+            questions: [
+              {
+                question: "9. Electronii se află în nucleul atomului. (A/F)",
+                type: "tf",
+                answer: "Fals",
+                explanation: "Electronii se găsesc în norul electronic, nu în nucleu."
+              },
+              {
+                question: "10. Reacțiile exotermice eliberează căldură în mediu. (A/F)",
+                type: "tf",
+                answer: "Adevărat",
+                explanation: "Reacțiile exotermice eliberează căldură în mediu."
+              },
+              {
+                question: "11. Izotopii unui element au același număr de protoni, dar număr diferit de neutroni. (A/F)",
+                type: "tf",
+                answer: "Adevărat",
+                explanation: "Izotopii au același număr de protoni, dar variază în numărul de neutroni."
+              },
+              {
+                question: "12. Apa pură are un pH de aproximativ 5. (A/F)",
+                type: "tf",
+                answer: "Fals",
+                explanation: "Apa pură are un pH de aproximativ 7."
+              }
+            ]
+          }
+        ]
+      }
+    ];
+    
+    // Generate sidebar with domains and subdomains
+    function generateSidebar() {
+      const domainList = document.getElementById("domainList");
+      domainList.innerHTML = "";
+      quizData.forEach((domainItem, domainIndex) => {
+        const domainDiv = document.createElement("div");
+        domainDiv.classList.add("domain");
+        domainDiv.textContent = domainItem.domain;
+        domainDiv.addEventListener("click", function(){
+          const subDiv = this.nextElementSibling;
+          if(subDiv) {
+            subDiv.style.display = (subDiv.style.display === "none" || subDiv.style.display === "") ? "block" : "none";
+          }
         });
-    </script>
+        domainList.appendChild(domainDiv);
+        const subdomainContainer = document.createElement("div");
+        subdomainContainer.classList.add("subdomains");
+        domainItem.subdomains.forEach((subdomainItem, subdomainIndex) => {
+          const subdomainDiv = document.createElement("div");
+          subdomainDiv.classList.add("subdomain");
+          subdomainDiv.textContent = subdomainItem.subdomain;
+          subdomainDiv.addEventListener("click", function(e){
+            e.stopPropagation();
+            loadQuiz(domainIndex, subdomainIndex);
+          });
+          subdomainContainer.appendChild(subdomainDiv);
+        });
+        domainList.appendChild(subdomainContainer);
+      });
+    }
+    
+    // Load the quiz for a given subdomain into the content area
+    function loadQuiz(domainIndex, subdomainIndex) {
+      const quizContainer = document.getElementById("quizContainer");
+      const verifyBtn = document.getElementById("verifyBtn");
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = "";
+      verifyBtn.style.display = "block";
+      const selectedQuiz = quizData[domainIndex].subdomains[subdomainIndex].questions;
+      let html = "";
+      let specialInput = (domainIndex === 0 && subdomainIndex === 0);
+      selectedQuiz.forEach((q, index) => {
+        const qId = `q${index}`;
+        html += `<div class="question-block">
+                   <p><strong>${q.question}</strong></p>`;
+        if(q.type === "text") {
+          html += `<input type="text" id="${qId}" ${specialInput ? 'class="special-input"' : ''}>`;
+        } else if(q.type === "text-multi") {
+          q.answer.forEach((ans, idx) => {
+            html += `<input type="text" id="${qId}_${idx}" placeholder="Răspuns ${idx+1}" style="width:48%; margin-right:4%;" ${specialInput ? 'class="special-input"' : ''}>`;
+          });
+        } else if(q.type === "mc") {
+          html += `<ul>`;
+          q.options.forEach(option => {
+            html += `<li>
+                       <label>
+                         <input type="radio" name="${qId}" value="${option}"> ${option}
+                       </label>
+                     </li>`;
+          });
+          html += `</ul>`;
+        } else if(q.type === "tf") {
+          html += `<ul>
+                     <li>
+                       <label>
+                         <input type="radio" name="${qId}" value="Adevărat"> Adevărat
+                       </label>
+                     </li>
+                     <li>
+                       <label>
+                         <input type="radio" name="${qId}" value="Fals"> Fals
+                       </label>
+                     </li>
+                   </ul>`;
+        }
+        html += `<div class="feedback" id="feedback-${qId}"></div>`;
+        html += `</div>`;
+      });
+      quizContainer.innerHTML = html;
+      verifyBtn.onclick = function() {
+        verifyAnswers(selectedQuiz);
+      };
+    }
+    
+    // Verify the answers and show results
+    function verifyAnswers(questions) {
+      let score = 0;
+      let feedbackHTML = "";
+      questions.forEach((q, index) => {
+        const qId = `q${index}`;
+        if(q.type === "text") {
+          let userAnswer = document.getElementById(qId).value;
+          if(isCorrectAnswer(userAnswer, q.answer)) {
+            score++;
+            feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:green;">Corect</span></p>`;
+          } else {
+            feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:red;">Greșit</span>. Explicație: ${q.explanation}</p>`;
+          }
+        } else if(q.type === "text-multi") {
+          let correctCount = 0;
+          q.answer.forEach((acceptable, idx) => {
+            let userInp = document.getElementById(`${qId}_${idx}`).value;
+            if(isCorrectAnswer(userInp, acceptable)) {
+              correctCount++;
+            }
+          });
+          if(correctCount === q.answer.length) {
+            score++;
+            feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:green;">Corect</span></p>`;
+          } else {
+            feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:red;">Greșit</span>. Explicație: ${q.explanation}</p>`;
+          }
+        } else if(q.type === "mc" || q.type === "tf") {
+          const selected = document.querySelector(`input[name="q${index}"]:checked`);
+          if(selected) {
+            if(isCorrectAnswer(selected.value, q.answer)) {
+              score++;
+              feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:green;">Corect</span></p>`;
+            } else {
+              feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:red;">Greșit</span>. Explicație: ${q.explanation}</p>`;
+            }
+          } else {
+            feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:red;">Nespecificat</span>. Răspuns corect: ${q.answer}. Explicație: ${q.explanation}</p>`;
+          }
+        }
+      });
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = `<h2>Rezultate: ${score} din ${questions.length} întrebări corecte</h2>` + feedbackHTML;
+      resultsDiv.scrollIntoView({ behavior: "smooth" });
+    }
+    
+    window.onload = generateSidebar;
+  </script>
 </body>
 </html>
