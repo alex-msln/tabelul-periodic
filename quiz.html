@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Chestionar de Chimie</title>
   <style>
-    /* Global Reset & Base Styles */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -13,12 +12,12 @@
     }
     body {
       font-family: 'Arial', sans-serif;
-      background: #fafafa; /* Light gray background like the first example */
+      background: #fafafa;
       color: #333;
     }
-    /* Navbar Styles (inspired by the first HTML) */
+
     .navbar {
-      background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+      background: rgba(255, 255, 255, 0.8);
       border-bottom: 1px solid rgba(200, 200, 200, 0.5);
       padding: 5px 20px;
       position: sticky;
@@ -62,10 +61,9 @@
       background: rgba(0, 0, 0, 0.1);
       color: #000;
     }
-    /* Layout Styles (from the second site) */
     #container {
       display: flex;
-      min-height: calc(100vh - 60px); /* Adjust for navbar height */
+      min-height: calc(100vh - 60px);
     }
     #sidebar {
       width: 260px;
@@ -78,7 +76,7 @@
       font-size: 1.4em;
       text-align: center;
       margin-bottom: 15px;
-      color: #007bff; /* Primary color from the first snippet */
+      color: #007bff;
     }
     .domain {
       background: #e8f0fe;
@@ -123,7 +121,7 @@
       padding: 18px;
       margin-bottom: 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
       border-left: 5px solid #007bff;
     }
     .question-block p {
@@ -158,10 +156,6 @@
       color: #333;
       background: #fff;
     }
-    .special-input {
-      background: #e7f0fd;
-      color: #333;
-    }
     .btn {
       background: #007bff;
       color: #fff;
@@ -182,7 +176,7 @@
       padding: 20px;
       background: #fff;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
     #results p {
       margin: 10px 0;
@@ -201,17 +195,18 @@
   </style>
 </head>
 <body>
-  <!-- Navbar implemented using styles from the first HTML snippet -->
+  <!-- Navbar -->
   <header class="navbar">
     <div class="navbar-container">
       <div class="nav-logo">Chestionar de Chimie</div>
       <nav class="nav-links">
-        <a href="index.html" class="nav-item">Acasă</a>
+         <a href="index.html" class="nav-item">Acasă</a>
         <a href="quiz.html" class="nav-item">Quiz</a>
         <a href="DS.html" class="nav-item">Despre Sănătate</a>
       </nav>
     </div>
   </header>
+  
   <!-- Main Container -->
   <div id="container">
     <!-- Sidebar: Domenii & subdomenii -->
@@ -219,132 +214,155 @@
       <h2>Domenii</h2>
       <div id="domainList"></div>
     </div>
-    <!-- Content Area -->
+    <!-- Zona de conținut -->
     <div id="content">
       <h2>Exercițiu</h2>
       <div id="quizContainer">
-        <p style="text-align:center; color:#666;">Selectați un subdomeniu din stânga pentru a începe exercițiul.</p>
+        <p style="text-align:center; color:#666;">Selectați un domeniu și un subdomeniu din stânga pentru a începe exercițiul.</p>
       </div>
       <button id="verifyBtn" class="btn" style="display:none;">Verifică răspunsurile</button>
       <div id="results"></div>
     </div>
   </div>
-
+  
   <script>
-    // Helper function to check answers
-    function isCorrectAnswer(userAns, correct) {
-      userAns = userAns.trim().toLowerCase();
-      if (typeof correct === "string") {
-        return userAns === correct.trim().toLowerCase();
-      } else if (Array.isArray(correct)) {
-        return correct.some(ans => userAns === ans.trim().toLowerCase());
-      }
-      return false;
-    }
-    
-    // Quiz Data structure
+    // Structura de date pentru chestionar
     const quizData = [
       {
-        domain: "Chimie Generală",
+        domain: "Întrebări V/F",
         subdomains: [
           {
-            subdomain: "Completarea spațiilor libere",
+            subdomain: "Secțiunea 1",
             questions: [
-              {
-                question: "1. Simbolul chimic al oxigenului este ____. ",
-                type: "text",
-                answer: "O",
-                explanation: "Simbolul chimic al oxigenului este O."
-              },
-              {
-                question: "2. Masa atomică a carbonului este aproximativ ____ unități de masă atomică.",
-                type: "text",
-                answer: "12",
-                explanation: "Masa atomică a carbonului este aproximativ 12."
-              },
-              {
-                question: "3. Apa este formată din ____ atomi de hidrogen și ____ atom de oxigen.",
-                type: "text-multi",
-                answer: [
-                  ["2", "doi", "Doi"],
-                  ["1", "un", "Un"]
-                ],
-                explanation: "Apa (H₂O) este formată din 2 atomi de hidrogen și 1 atom de oxigen."
-              },
-              {
-                question: "4. Formula chimică a acidului sulfuric este ____. ",
-                type: "text",
-                answer: "H2SO4",
-                explanation: "Formula acidului sulfuric este H₂SO₄."
-              },
-              {
-                question: "5. Protonii au sarcină __, iar electronii au sarcină __.",
-                type: "text-multi",
-                answer: [
-                  ["pozitiv", "pozitivă"],
-                  ["negativ", "negativă"]
-                ],
-                explanation: "Protonii au sarcină pozitivă, iar electronii au sarcină negativă."
-              }
+              { question: "Elementele din grupa alcalinelor au un singur electron de valență.", type: "tf", answer: "Adevărat" },
+              { question: "Apa este un solvent nonpolar.", type: "tf", answer: "Fals" },
+              { question: "În oxidare, o substanță își pierde electroni.", type: "tf", answer: "Adevărat" },
+              { question: "Ionii pozitivi sunt cationi, iar cei negativi anioni.", type: "tf", answer: "Adevărat" },
+              { question: "Metalele de tranziție nu formează ioni cu sarcini multiple.", type: "tf", answer: "Fals" },
+              { question: "Hidrocarburile aromatice, cum ar fi benzenul, au un miros distinct.", type: "tf", answer: "Adevărat" },
+              { question: "Compușii cu grupa -COOH sunt acizi carboxilici.", type: "tf", answer: "Adevărat" },
+              { question: "Toate reacțiile chimice sunt ireversibile.", type: "tf", answer: "Fals" },
+              { question: "Temperatura de fierbere este influențată de forțele intermoleculare.", type: "tf", answer: "Adevărat" },
+              { question: "Electroliții conduc curentul datorită ionilor formați în soluție.", type: "tf", answer: "Adevărat" },
+              { question: "Ionii Cl⁻ se formează prin adăugarea unui electron la atomul de clor.", type: "tf", answer: "Adevărat" },
+              { question: "Compușii ionici au, în general, puncte de topire ridicate.", type: "tf", answer: "Adevărat" },
+              { question: "Polimerii naturali (ex.: proteine, acizi nucleici) sunt esențiali vieții.", type: "tf", answer: "Adevărat" },
+              { question: "Reacțiile de substituție nucleofilă sunt tipice pentru compușii organici halogenați.", type: "tf", answer: "Adevărat" },
+              { question: "Hidrocarburile saturate conțin cel puțin o legătură dublă între atomi de carbon.", type: "tf", answer: "Fals" }
             ]
-          },
+          }
+        ]
+      },
+      {
+        domain: "Chimie anorganică - Completare",
+        subdomains: [
           {
-            subdomain: "Alege răspunsul corect",
+            subdomain: "Completare",
             questions: [
-              {
-                question: "6. Care dintre următoarele substanțe este un compus?",
-                type: "mc",
-                options: ["Fier", "Oxigen", "Apă", "Aur"],
-                answer: "Apă",
-                explanation: "Apă este un compus, pe când celelalte sunt elemente."
-              },
-              {
-                question: "7. Ce tip de legătură chimică există în molecula de sare (NaCl)?",
-                type: "mc",
-                options: ["Covalentă", "Ionică", "Metalică", "Van der Waals"],
-                answer: "Ionică",
-                explanation: "Legătura din NaCl este de tip ionic."
-              },
-              {
-                question: "8. Ce reprezintă pH-ul unei soluții?",
-                type: "mc",
-                options: [
-                  "Concentrația de protoni",
-                  "Cantitatea de precipitat format",
-                  "Numărul de electroni liberi",
-                  "Viteza unei reacții chimice"
-                ],
-                answer: "Concentrația de protoni",
-                explanation: "pH-ul măsoară concentrația ionilor de hidrogen (protoni) din soluție."
-              }
+              { question: "Masa molară a apei este de aproximativ ___ g/mol.", type: "text", answer: "18" },
+              { question: "Substanțele care conduc curentul electric în soluție se numesc ___.", type: "text", answer: "electroliți" },
+              { question: "Oxizii metalelor alcaline sunt de natură ___.", type: "text", answer: "bazice" },
+              { question: "Într-o reacție de neutralizare dintre un acid și o bază se formează _ și _.", type: "text-multi", answer: ["apă", "sare"] },
+              { question: "Creta conține carbonat de calciu, a cărui formulă chimică este ___.", type: "text", answer: "CaCO3" }
             ]
-          },
+          }
+        ]
+      },
+      {
+        domain: "Chimie organică - Completare",
+        subdomains: [
           {
-            subdomain: "Adevărat sau fals",
+            subdomain: "Completare",
             questions: [
+              { question: "Alchenele sunt hidrocarburi nesaturate care conțin cel puțin o legătură ___.", type: "text", answer: "dublă" },
+              { question: "Propanul face parte din seria ___.", type: "text", answer: "alcanelor" },
+              { question: "Grupa funcțională caracteristică aldehidelor este ___.", type: "text", answer: "-CHO" },
+              { question: "Reacția dintre un acid carboxilic și un alcool formează un compus numit ___.", type: "text", answer: "ester" },
+              { question: "Benzina este un amestec de ___.", type: "text", answer: "hidrocarburi" }
+            ]
+          }
+        ]
+      },
+      {
+        domain: "Reacții chimice și proprietăți - Completare",
+        subdomains: [
+          {
+            subdomain: "Completare",
+            questions: [
+              { question: "Substanțele care accelerează o reacție chimică fără a fi consumate se numesc ___.", type: "text", answer: "catalizatori" },
+              { question: "Într-o reacție de oxidare, o substanță __, iar într-o reacție de reducere, o substanță _.", type: "text-multi", answer: ["își pierde electroni", "își câștigă electroni"] },
+              { question: "Reacțiile exotermice eliberează __, în timp ce reacțiile endotermice absorb _.", type: "text-multi", answer: ["căldură", "căldură"] },
+              { question: "Factorii care influențează viteza unei reacții chimice sunt temperatura, concentrația, suprafața de contact și ___.", type: "text", answer: "presiunea" },
+              { question: "Într-o soluție apoasă, un pH mai mic decât 7 indică un mediu __, iar un pH mai mare decât 7 indică un mediu _.", type: "text-multi", answer: ["acid", "bază"] }
+            ]
+          }
+        ]
+      },
+      {
+        domain: "Chimie anorganică - Întrebări cu alegere multiplă",
+        subdomains: [
+          {
+            subdomain: "Alegere multiplă",
+            questions: [
+              { question: "Ionul care are mai multe electroni decât protoni este ___.", type: "mc", options: ["cation", "anion", "atom neutru"], answer: "anion" },
+              { question: "Când un metal reacționează cu un acid, se formează o sare și ___.", type: "mc", options: ["apă", "hidrogen", "oxigen"], answer: "hidrogen" },
+              { question: "Cel mai abundent gaz din atmosfera Pământului este ___.", type: "mc", options: ["oxigenul", "azotul", "dioxidul de carbon"], answer: "azotul" },
+              { question: "Un exemplu de oxid acid este ___.", type: "mc", options: ["CaO", "CO₂", "Na₂O"], answer: "CO₂" },
+              { question: "Un ion de calciu (Ca²⁺) are ___.", type: "mc", options: ["doi electroni în plus", "doi electroni în minus", "același număr de electroni ca și protoni"], answer: "doi electroni în minus" }
+            ]
+          }
+        ]
+      },
+      {
+        domain: "Chimie organică - Întrebări cu alegere multiplă",
+        subdomains: [
+          {
+            subdomain: "Alegere multiplă",
+            questions: [
+              { question: "Formula moleculară a etanolului este ___.", type: "mc", options: ["C₂H₆O", "C₃H₈O", "C₂H₄O₂"], answer: "C₂H₆O" },
+              { question: "Reacția de ardere a unui hidrocarbură produce ___.", type: "mc", options: ["apă și dioxid de carbon", "oxigen și hydrogen", "acid sulfuric și amoniac"], answer: "apă și dioxid de carbon" },
+              { question: "Alchinele conțin cel puțin o legătură ___.", type: "mc", options: ["simplă", "dublă", "triplă"], answer: "triplă" },
+              { question: "Grupa funcțională a acizilor carboxilici este ___.", type: "mc", options: ["-OH", "-COOH", "-CHO"], answer: "-COOH" },
+              { question: "Reacția de polimerizare este specifică ___.", type: "mc", options: ["alcanilor", "alchenelor", "acizilor carboxilici"], answer: "alchenelor" }
+            ]
+          }
+        ]
+      },
+      {
+        domain: "Reacții chimice și proprietăți - Întrebări cu alegere multiplă",
+        subdomains: [
+          {
+            subdomain: "Alegere multiplă",
+            questions: [
+              { question: "Într-o reacție de disociere electrolitică, un compus ___.", type: "mc", options: ["formează molecule neutre", "se descompune în ioni", "reacționează cu oxigenul"], answer: "se descompune în ioni" },
+              { question: "Într-o reacție de reducere, o substanță __.", type: "mc", options: ["pierde electroni", "câștigă electroni", "își păstrează electronii"], answer: "câștigă electroni" },
+              { question: "Un indicator acid-bază este utilizat pentru a determina ___.", type: "mc", options: ["concentrația ionilor de sodiu", "pH-ul unei soluții", "temperatura unei reacții"], answer: "pH-ul unei soluții" },
+              { question: "Substanțele care accelerează o reacție fără a fi consumate se numesc ___.", type: "mc", options: ["reactanți", "catalizatori", "produși de reacție"], answer: "catalizatori" },
+              { question: "Apa pură are un pH de ___.", type: "mc", options: ["5", "7", "9"], answer: "7" }
+            ]
+          }
+        ]
+      },
+      {
+        domain: "Videouri utile",
+        subdomains: [
+          {
+            subdomain: "Videouri",
+            videos: [
               {
-                question: "9. Electronii se află în nucleul atomului. (A/F)",
-                type: "tf",
-                answer: "Fals",
-                explanation: "Electronii se găsesc în norul electronic, nu în nucleu."
+                title: "Reacții de hidroliză",
+                description: "Videoclipul explică procesul de hidroliză, prezentând exemple și aplicații practice ale acestui tip de reacție.",
+                url: "https://www.youtube.com/watch?v=Web4VTXWGSM"
               },
               {
-                question: "10. Reacțiile exotermice eliberează căldură în mediu. (A/F)",
-                type: "tf",
-                answer: "Adevărat",
-                explanation: "Reacțiile exotermice eliberează căldură în mediu."
+                title: "Reacția de neutralizare în soluții apoase",
+                description: "Acest videoclip demonstrează reacțiile de neutralizare între acizi și baze în soluții apoase, subliniind importanța acestora în chimia de bază.",
+                url: "https://www.youtube.com/watch?v=WceOHS4S6Y4"
               },
               {
-                question: "11. Izotopii unui element au același număr de protoni, dar număr diferit de neutroni. (A/F)",
-                type: "tf",
-                answer: "Adevărat",
-                explanation: "Izotopii au același număr de protoni, dar variază în numărul de neutroni."
-              },
-              {
-                question: "12. Apa pură are un pH de aproximativ 5. (A/F)",
-                type: "tf",
-                answer: "Fals",
-                explanation: "Apa pură are un pH de aproximativ 7."
+                title: "Reacții de esterificare",
+                description: "Acest videoclip explică procesul de formare a esterilor prin reacția dintre acizi carboxilici și alcooli, evidențiind mecanismul și aplicațiile practice.",
+                url: "https://www.youtube.com/watch?v=B1-XSD2S9m0"
               }
             ]
           }
@@ -352,7 +370,7 @@
       }
     ];
     
-    // Generate sidebar with domains and subdomains
+    // Generează sidebar-ul din domenii și subdomenii
     function generateSidebar() {
       const domainList = document.getElementById("domainList");
       domainList.innerHTML = "";
@@ -367,6 +385,7 @@
           }
         });
         domainList.appendChild(domainDiv);
+        // Subdomenii
         const subdomainContainer = document.createElement("div");
         subdomainContainer.classList.add("subdomains");
         domainItem.subdomains.forEach((subdomainItem, subdomainIndex) => {
@@ -382,61 +401,76 @@
         domainList.appendChild(subdomainContainer);
       });
     }
-    
-    // Load the quiz for a given subdomain into the content area
+
     function loadQuiz(domainIndex, subdomainIndex) {
       const quizContainer = document.getElementById("quizContainer");
       const verifyBtn = document.getElementById("verifyBtn");
       const resultsDiv = document.getElementById("results");
       resultsDiv.innerHTML = "";
-      verifyBtn.style.display = "block";
-      const selectedQuiz = quizData[domainIndex].subdomains[subdomainIndex].questions;
-      let html = "";
-      let specialInput = (domainIndex === 0 && subdomainIndex === 0);
-      selectedQuiz.forEach((q, index) => {
-        const qId = `q${index}`;
-        html += `<div class="question-block">
-                   <p><strong>${q.question}</strong></p>`;
-        if(q.type === "text") {
-          html += `<input type="text" id="${qId}" ${specialInput ? 'class="special-input"' : ''}>`;
-        } else if(q.type === "text-multi") {
-          q.answer.forEach((ans, idx) => {
-            html += `<input type="text" id="${qId}_${idx}" placeholder="Răspuns ${idx+1}" style="width:48%; margin-right:4%;" ${specialInput ? 'class="special-input"' : ''}>`;
-          });
-        } else if(q.type === "mc") {
-          html += `<ul>`;
-          q.options.forEach(option => {
-            html += `<li>
-                       <label>
-                         <input type="radio" name="${qId}" value="${option}"> ${option}
-                       </label>
-                     </li>`;
-          });
-          html += `</ul>`;
-        } else if(q.type === "tf") {
-          html += `<ul>
-                     <li>
-                       <label>
-                         <input type="radio" name="${qId}" value="Adevărat"> Adevărat
-                       </label>
-                     </li>
-                     <li>
-                       <label>
-                         <input type="radio" name="${qId}" value="Fals"> Fals
-                       </label>
-                     </li>
-                   </ul>`;
-        }
-        html += `<div class="feedback" id="feedback-${qId}"></div>`;
-        html += `</div>`;
-      });
-      quizContainer.innerHTML = html;
-      verifyBtn.onclick = function() {
-        verifyAnswers(selectedQuiz);
-      };
+
+      const selectedSubdomain = quizData[domainIndex].subdomains[subdomainIndex];
+
+      if (selectedSubdomain.videos) {
+        verifyBtn.style.display = "none";
+        let html = "<h3>Videouri utile</h3>";
+        selectedSubdomain.videos.forEach(video => {
+          html += `<div class="video-item" style="margin-bottom:15px;">
+                     <h4>${video.title}</h4>
+                     <p>${video.description}</p>
+                     <a href="${video.url}" target="_blank">${video.url}</a>
+                   </div>`;
+        });
+        quizContainer.innerHTML = html;
+      } else {
+        // Încarcă întrebările
+        verifyBtn.style.display = "block";
+        const selectedQuiz = selectedSubdomain.questions;
+        let html = "";
+        let specialInput = false; 
+        selectedQuiz.forEach((q, index) => {
+          const qId = `q${index}`;
+          html += `<div class="question-block">
+                     <p><strong>${q.question}</strong></p>`;
+          if(q.type === "text") {
+            html += `<input type="text" id="${qId}" ${specialInput ? 'class="special-input"' : ''}>`;
+          } else if(q.type === "text-multi") {
+            q.answer.forEach((ans, idx) => {
+              html += `<input type="text" id="${qId}_${idx}" placeholder="Răspuns ${idx+1}" style="width:48%; margin-right:4%;" ${specialInput ? 'class="special-input"' : ''}>`;
+            });
+          } else if(q.type === "mc") {
+            html += `<ul>`;
+            q.options.forEach(option => {
+              html += `<li>
+                         <label>
+                           <input type="radio" name="${qId}" value="${option}"> ${option}
+                         </label>
+                       </li>`;
+            });
+            html += `</ul>`;
+          } else if(q.type === "tf") {
+            html += `<ul>
+                       <li>
+                         <label>
+                           <input type="radio" name="${qId}" value="Adevărat"> Adevărat
+                         </label>
+                       </li>
+                       <li>
+                         <label>
+                           <input type="radio" name="${qId}" value="Fals"> Fals
+                         </label>
+                       </li>
+                     </ul>`;
+          }
+          html += `<div class="feedback" id="feedback-${qId}"></div>`;
+          html += `</div>`;
+        });
+        quizContainer.innerHTML = html;
+        verifyBtn.onclick = function() {
+          verifyAnswers(selectedQuiz);
+        };
+      }
     }
-    
-    // Verify the answers and show results
+
     function verifyAnswers(questions) {
       let score = 0;
       let feedbackHTML = "";
@@ -444,17 +478,17 @@
         const qId = `q${index}`;
         if(q.type === "text") {
           let userAnswer = document.getElementById(qId).value;
-          if(isCorrectAnswer(userAnswer, q.answer)) {
+          if(userAnswer.trim().toLowerCase() === q.answer.trim().toLowerCase()) {
             score++;
             feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:green;">Corect</span></p>`;
           } else {
-            feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:red;">Greșit</span>. Explicație: ${q.explanation}</p>`;
+            feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:red;">Greșit</span>. Răspuns corect: ${q.answer}</p>`;
           }
         } else if(q.type === "text-multi") {
           let correctCount = 0;
           q.answer.forEach((acceptable, idx) => {
             let userInp = document.getElementById(`${qId}_${idx}`).value;
-            if(isCorrectAnswer(userInp, acceptable)) {
+            if(userInp.trim().toLowerCase() === acceptable.trim().toLowerCase()) {
               correctCount++;
             }
           });
@@ -462,19 +496,19 @@
             score++;
             feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:green;">Corect</span></p>`;
           } else {
-            feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:red;">Greșit</span>. Explicație: ${q.explanation}</p>`;
+            feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:red;">Greșit</span>. Răspuns corect: ${q.answer.join(" și ")}</p>`;
           }
         } else if(q.type === "mc" || q.type === "tf") {
           const selected = document.querySelector(`input[name="q${index}"]:checked`);
           if(selected) {
-            if(isCorrectAnswer(selected.value, q.answer)) {
+            if(selected.value.trim().toLowerCase() === q.answer.trim().toLowerCase()) {
               score++;
               feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:green;">Corect</span></p>`;
             } else {
-              feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:red;">Greșit</span>. Explicație: ${q.explanation}</p>`;
+              feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:red;">Greșit</span>. Răspuns corect: ${q.answer}</p>`;
             }
           } else {
-            feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:red;">Nespecificat</span>. Răspuns corect: ${q.answer}. Explicație: ${q.explanation}</p>`;
+            feedbackHTML += `<p><strong>Întrebarea:</strong> "${q.question}" – <span style="color:red;">Nespecificat</span>. Răspuns corect: ${q.answer}</p>`;
           }
         }
       });
