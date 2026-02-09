@@ -16,7 +16,7 @@
       background: #fafafa;
       color: #333;
     }
-    /* Navbar – inspirat din primul exemplu */
+    /* Navbar */
     .navbar {
       background: rgba(255, 255, 255, 0.8);
       border-bottom: 1px solid rgba(200, 200, 200, 0.5);
@@ -201,7 +201,6 @@
   </style>
 </head>
 <body>
-  <!-- Navbar -->
   <header class="navbar">
     <div class="navbar-container">
       <div class="nav-logo">Chestionar de Chimie</div>
@@ -213,14 +212,11 @@
     </div>
   </header>
   
-  <!-- Main Container -->
   <div id="container">
-    <!-- Sidebar: Domenii & subdomenii -->
     <div id="sidebar">
       <h2>Domenii</h2>
       <div id="domainList"></div>
     </div>
-    <!-- Zona de conținut -->
     <div id="content">
       <h2>Exercițiu</h2>
       <div id="quizContainer">
@@ -232,390 +228,319 @@
   </div>
   
   <script>
-    // Structura de date pentru chestionar (exemplele includ și câte o explicație succintă pe un singur rând)
+    // Structura de date actualizată conform documentului Word
     const quizData = [
       {
-        domain: "Întrebări V/F",
+        domain: "CHIMIE – CLASA a VII-a",
         subdomains: [
           {
-            subdomain: "Secțiunea 1",
+            subdomain: "TEST 1 – GRILĂ",
             questions: [
-              { 
-                question: "Elementele din grupa alcalinelor au un singur electron de valență.", 
-                type: "tf", 
-                answer: "Adevărat",
-                explanation: "Are un singur electron de valență."
-              },
-              { 
-                question: "Apa este un solvent nonpolar.", 
-                type: "tf", 
-                answer: "Fals",
-                explanation: "Apa este un solvent polar datorită structurii sale."
-              },
-              { 
-                question: "În oxidare, o substanță își pierde electroni.", 
-                type: "tf", 
-                answer: "Adevărat",
-                explanation: "Oxidarea implică pierderea electronilor."
-              },
-              { 
-                question: "Ionii pozitivi sunt cationi, iar cei negativi anioni.", 
-                type: "tf", 
-                answer: "Adevărat",
-                explanation: "Cationii sunt pozitivi, anionii negativi."
-              },
-              { 
-                question: "Metalele de tranziție nu formează ioni cu sarcini multiple.", 
-                type: "tf", 
-                answer: "Fals",
-                explanation: "Aceste metale pot forma ioni cu sarcini variabile."
-              },
-              { 
-                question: "Hidrocarburile aromatice, cum ar fi benzenul, au un miros distinct.", 
-                type: "tf", 
-                answer: "Adevărat",
-                explanation: "Aroma lor este specifică structurii conjugate."
-              },
-              { 
-                question: "Compușii cu grupa -COOH sunt acizi carboxilici.", 
-                type: "tf", 
-                answer: "Adevărat",
-                explanation: "Prezența grupării -COOH le conferă proprietăți acide."
-              },
-              { 
-                question: "Toate reacțiile chimice sunt ireversibile.", 
-                type: "tf", 
-                answer: "Fals",
-                explanation: "Multe reacții sunt reversibile în anumite condiții."
-              },
-              { 
-                question: "Temperatura de fierbere este influențată de forțele intermoleculare.", 
-                type: "tf", 
-                answer: "Adevărat",
-                explanation: "Forțele intermoleculare determină punctul de fierbere."
-              },
-              { 
-                question: "Electroliții conduc curentul datorită ionilor formați în soluție.", 
-                type: "tf", 
-                answer: "Adevărat",
-                explanation: "Ionii din soluție permit conductivitatea."
-              },
-              { 
-                question: "Ionii Cl⁻ se formează prin adăugarea unui electron la atomul de clor.", 
-                type: "tf", 
-                answer: "Adevărat",
-                explanation: "Adăugarea electronului transformă clorul într-un anion."
-              },
-              { 
-                question: "Compușii ionici au, în general, puncte de topire ridicate.", 
-                type: "tf", 
-                answer: "Adevărat",
-                explanation: "Legăturile ionice puternice ridică punctul de topire."
-              },
-              { 
-                question: "Polimerii naturali (ex.: proteine, acizi nucleici) sunt esențiali vieții.", 
-                type: "tf", 
-                answer: "Adevărat",
-                explanation: "Aceștia sunt fundamentali pentru structura celulară."
-              },
-              { 
-                question: "Reacțiile de substituție nucleofilă sunt tipice pentru compușii organici halogenați.", 
-                type: "tf", 
-                answer: "Adevărat",
-                explanation: "Aceste reacții implică înlocuirea unui halogen."
-              },
-              { 
-                question: "Hidrocarburile saturate conțin cel puțin o legătură dublă între atomi de carbon.", 
-                type: "tf", 
-                answer: "Fals",
-                explanation: "Saturatele au doar legături simple."
-              }
+              { question: "Substanța pură este:", type: "mc", options: ["aerul", "laptele", "apa distilată", "ceața"], answer: "apa distilată", explanation: "Răspuns corect: apa distilată" },
+              { question: "Atomul este alcătuit din:", type: "mc", options: ["molecule", "ioni", "protoni, neutroni și electroni", "atomi"], answer: "protoni, neutroni și electroni", explanation: "Răspuns corect: protoni, neutroni și electroni" },
+              { question: "Sarcina electronului este:", type: "mc", options: ["pozitivă", "negativă", "nulă", "variabilă"], answer: "negativă", explanation: "Răspuns corect: negativă" },
+              { question: "Nucleul atomului conține:", type: "mc", options: ["electroni", "protoni și neutroni", "molecule", "ioni"], answer: "protoni și neutroni", explanation: "Răspuns corect: protoni și neutroni" },
+              { question: "Numărul atomic arată:", type: "mc", options: ["masa atomului", "numărul de electroni pierduți", "numărul de protoni", "numărul de neutroni"], answer: "numărul de protoni", explanation: "Răspuns corect: numărul de protoni" },
+              { question: "Molecula este:", type: "mc", options: ["un ion", "cea mai mică parte a unei substanțe", "un atom", "nucleul"], answer: "cea mai mică parte a unei substanțe", explanation: "Răspuns corect: cea mai mică parte a unei substanțe" },
+              { question: "Ionul pozitiv se numește:", type: "mc", options: ["anion", "cation", "atom", "moleculă"], answer: "cation", explanation: "Răspuns corect: cation" },
+              { question: "Fierberea apei este:", type: "mc", options: ["reacție chimică", "transformare fizică", "combustie", "oxidare"], answer: "transformare fizică", explanation: "Răspuns corect: transformare fizică" },
+              { question: "Substanțele simple sunt formate din:", type: "mc", options: ["atomi diferiți", "molecule diferite", "atomi identici", "ioni"], answer: "atomi identici", explanation: "Răspuns corect: atomi identici" },
+              { question: "Atomul este electric:", type: "mc", options: ["pozitiv", "negativ", "neutru", "instabil"], answer: "neutru", explanation: "Răspuns corect: neutru" }
+            ]
+          },
+          {
+            subdomain: "TEST 2 – ADEVĂRAT / FALS",
+            questions: [
+              { question: "Protonii au sarcină pozitivă.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Electronii se află în nucleu.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Neutronii au sarcină nulă.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Apa distilată este substanță pură.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Laptele este substanță pură.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Moleculele pot fi formate din mai mulți atomi.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Transformările fizice produc substanțe noi.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Ionii au sarcină electrică.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Fierberea este reacție chimică.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Aerul este un amestec.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" }
+            ]
+          },
+          {
+            subdomain: "TEST 3 – GRILĂ",
+            questions: [
+              { question: "Ionul negativ se numește:", type: "mc", options: ["cation", "proton", "anion", "electron"], answer: "anion", explanation: "Răspuns corect: anion" },
+              { question: "Electronii au sarcină:", type: "mc", options: ["pozitivă", "nulă", "negativă", "dublă"], answer: "negativă", explanation: "Răspuns corect: negativă" },
+              { question: "Molecula apei conține:", type: "mc", options: ["2 atomi", "3 atomi", "4 atomi", "5 atomi"], answer: "3 atomi", explanation: "Răspuns corect: 3 atomi (H₂O)" },
+              { question: "Substanțele compuse conțin:", type: "mc", options: ["atomi identici", "atomi diferiți", "un singur atom", "doar ioni"], answer: "atomi diferiți", explanation: "Răspuns corect: atomi diferiți" },
+              { question: "Aerul este:", type: "mc", options: ["substanță pură", "compus", "amestec", "element"], answer: "amestec", explanation: "Răspuns corect: amestec" },
+              { question: "Transformările chimice:", type: "mc", options: ["sunt reversibile", "nu produc substanțe noi", "produc substanțe noi", "sunt doar fizice"], answer: "produc substanțe noi", explanation: "Răspuns corect: produc substanțe noi" },
+              { question: "Atomul este cea mai mică parte a:", type: "mc", options: ["moleculei", "substanței simple", "ionului", "amestecului"], answer: "substanței simple", explanation: "Răspuns corect: substanței simple" },
+              { question: "Nucleul atomului este încărcat:", type: "mc", options: ["negativ", "pozitiv", "neutru", "variabil"], answer: "pozitiv", explanation: "Răspuns corect: pozitiv" },
+              { question: "Masa atomului este dată în principal de:", type: "mc", options: ["electroni", "protoni și neutroni", "ioni", "molecule"], answer: "protoni și neutroni", explanation: "Răspuns corect: protoni și neutroni" },
+              { question: "Oxigenul este:", type: "mc", options: ["substanță compusă", "amestec", "substanță simplă", "soluție"], answer: "substanță simplă", explanation: "Răspuns corect: substanță simplă" }
+            ]
+          },
+          {
+            subdomain: "TEST 4 – GRILĂ",
+            questions: [
+              { question: "Ionul se formează când atomul:", type: "mc", options: ["câștigă sau pierde electroni", "pierde protoni", "câștigă neutroni", "se combină chimic"], answer: "câștigă sau pierde electroni", explanation: "Răspuns corect: câștigă sau pierde electroni" },
+              { question: "Neutronii au sarcină:", type: "mc", options: ["pozitivă", "negativă", "nulă", "dublă"], answer: "nulă", explanation: "Răspuns corect: nulă" },
+              { question: "Molecula este:", type: "mc", options: ["mai mare decât atomul", "mai mică decât atomul", "egală cu ionul", "nucleul"], answer: "mai mare decât atomul", explanation: "Răspuns corect: mai mare decât atomul" },
+              { question: "Transformarea chimică:", type: "mc", options: ["este reversibilă", "nu schimbă substanța", "produce substanțe noi", "este doar fizică"], answer: "produce substanțe noi", explanation: "Răspuns corect: produce substanțe noi" },
+              { question: "Oxigenul este:", type: "mc", options: ["amestec", "substanță simplă", "substanță compusă", "soluție"], answer: "substanță simplă", explanation: "Răspuns corect: substanță simplă" },
+              { question: "Apa este:", type: "mc", options: ["substanță simplă", "amestec", "substanță compusă", "element"], answer: "substanță compusă", explanation: "Răspuns corect: substanță compusă" },
+              { question: "Electronii se află:", type: "mc", options: ["în nucleu", "în jurul nucleului", "în protoni", "în neutroni"], answer: "în jurul nucleului", explanation: "Răspuns corect: în jurul nucleului" },
+              { question: "Substanțele pure au:", type: "mc", options: ["compoziție variabilă", "compoziție constantă", "mai multe faze", "mai multe substanțe"], answer: "compoziție constantă", explanation: "Răspuns corect: compoziție constantă" },
+              { question: "Atomul de hidrogen conține:", type: "mc", options: ["1 proton", "1 proton și 1 neutron", "1 neutron", "2 protoni"], answer: "1 proton", explanation: "Răspuns corect: 1 proton" },
+              { question: "Aerul este:", type: "mc", options: ["substanță pură", "compus", "amestec", "element"], answer: "amestec", explanation: "Răspuns corect: amestec" }
+            ]
+          },
+          {
+            subdomain: "TEST 5 – ADEVĂRAT / FALS",
+            questions: [
+              { question: "Atomul este electric neutru.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Electronii au masă mai mare decât protonii.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Ionii au sarcină electrică.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Fierberea este reacție chimică.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Moleculele pot fi formate din atomi diferiți.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Substanțele simple au atomi identici.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Aerul este substanță pură.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Neutronii au sarcină negativă.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Apa distilată este substanță pură.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Transformările chimice sunt ireversibile.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" }
+            ]
+          },
+          {
+            subdomain: "TEST 6 – GRILĂ",
+            questions: [
+              { question: "Nucleul atomului este încărcat:", type: "mc", options: ["negativ", "pozitiv", "neutru", "variabil"], answer: "pozitiv", explanation: "Răspuns corect: pozitiv" },
+              { question: "Electronii participă la:", type: "mc", options: ["masa atomului", "sarcina nucleului", "reacțiile chimice", "formarea neutronilor"], answer: "reacțiile chimice", explanation: "Răspuns corect: reacțiile chimice" },
+              { question: "Substanța formată dintr-un singur element este:", type: "mc", options: ["compus", "amestec", "substanță simplă", "soluție"], answer: "substanță simplă", explanation: "Răspuns corect: substanță simplă" },
+              { question: "Ionul pozitiv este:", type: "mc", options: ["anion", "cation", "atom", "moleculă"], answer: "cation", explanation: "Răspuns corect: cation" },
+              { question: "Transformările fizice:", type: "mc", options: ["schimbă compoziția", "produc substanțe noi", "nu schimbă compoziția", "sunt ireversibile"], answer: "nu schimbă compoziția", explanation: "Răspuns corect: nu schimbă compoziția" },
+              { question: "Masa atomului este determinată de:", type: "mc", options: ["electroni", "protoni și neutroni", "electroni și protoni", "ioni"], answer: "protoni și neutroni", explanation: "Răspuns corect: protoni și neutroni" },
+              { question: "Molecula de oxigen conține:", type: "mc", options: ["un atom", "doi atomi", "trei atomi", "patru atomi"], answer: "doi atomi", explanation: "Răspuns corect: doi atomi" },
+              { question: "Apa este formată din:", type: "mc", options: ["H și O", "C și O", "N și H", "Na și Cl"], answer: "H și O", explanation: "Răspuns corect: H și O" },
+              { question: "Aerul conține:", type: "mc", options: ["o singură substanță", "mai multe gaze", "doar oxigen", "doar azot"], answer: "mai multe gaze", explanation: "Răspuns corect: mai multe gaze" },
+              { question: "Atomul este:", type: "mc", options: ["divizibil chimic", "indivizibil chimic", "moleculă", "ion"], answer: "indivizibil chimic", explanation: "Răspuns corect: indivizibil chimic" }
+            ]
+          },
+          {
+            subdomain: "TEST 7 – ADEVĂRAT / FALS",
+            questions: [
+              { question: "Protonii se află în nucleu.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Electronii au sarcină pozitivă.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Substanțele compuse conțin elemente diferite.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Fierberea produce substanțe noi.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Ionii pot fi pozitivi sau negativi.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Atomii diferiți formează molecule.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Aerul este compus.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Neutronii contribuie la masa atomului.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Moleculele sunt mai mari decât atomii.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Transformările fizice sunt reversibile.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" }
+            ]
+          },
+          {
+            subdomain: "TEST 8 – GRILĂ",
+            questions: [
+              { question: "Sarcina nucleului este:", type: "mc", options: ["negativă", "pozitivă", "nulă", "variabilă"], answer: "pozitivă", explanation: "Răspuns corect: pozitivă" },
+              { question: "Molecula este unitatea:", type: "mc", options: ["atomului", "ionului", "substanței", "amestecului"], answer: "substanței", explanation: "Răspuns corect: substanței" },
+              { question: "Atomul de oxigen are:", type: "mc", options: ["6 protoni", "8 protoni", "10 protoni", "12 protoni"], answer: "8 protoni", explanation: "Răspuns corect: 8 protoni" },
+              { question: "Transformarea chimică:", type: "mc", options: ["nu implică energie", "produce substanțe noi", "este reversibilă", "este fizică"], answer: "produce substanțe noi", explanation: "Răspuns corect: produce substanțe noi" },
+              { question: "Substanțele simple:", type: "mc", options: ["sunt amestecuri", "au atomi identici", "au molecule diferite", "sunt soluții"], answer: "au atomi identici", explanation: "Răspuns corect: au atomi identici" },
+              { question: "Electronii sunt:", type: "mc", options: ["mai grei decât protonii", "fără sarcină", "încărcați negativ", "încărcați pozitiv"], answer: "încărcați negativ", explanation: "Răspuns corect: încărcați negativ" },
+              { question: "Ionii se formează prin:", type: "mc", options: ["reacții fizice", "pierdere sau câștig de electroni", "combinare chimică", "topire"], answer: "pierdere sau câștig de electroni", explanation: "Răspuns corect: pierdere sau câștig de electroni" },
+              { question: "Apa conține:", type: "mc", options: ["1 atom", "2 atomi", "3 atomi", "4 atomi"], answer: "3 atomi", explanation: "Răspuns corect: 3 atomi" },
+              { question: "Aerul este:", type: "mc", options: ["soluție", "compus", "amestec", "element"], answer: "amestec", explanation: "Răspuns corect: amestec" },
+              { question: "Atomul este:", type: "mc", options: ["cea mai mică parte a moleculei", "cea mai mică parte a substanței simple", "moleculă", "ion"], answer: "cea mai mică parte a substanței simple", explanation: "Răspuns corect: cea mai mică parte a substanței simple" }
+            ]
+          },
+          {
+            subdomain: "TEST 9 – ADEVĂRAT / FALS",
+            questions: [
+              { question: "Electronii determină reacțiile chimice.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Neutronii au sarcină negativă.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Apa este substanță compusă.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Aerul este amestec.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Atomii sunt indivizibili fizic.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals (sunt divizibili în particule subatomice)" },
+              { question: "Moleculele pot fi formate din atomi identici.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Ionii sunt neutri electric.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Transformările chimice sunt ireversibile.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Fierberea este transformare fizică.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Substanțele pure au compoziție constantă.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" }
+            ]
+          },
+          {
+            subdomain: "TEST 10 – EVALUARE FINALĂ",
+            questions: [
+              { question: "Substanța pură are:", type: "mc", options: ["compoziție variabilă", "compoziție constantă", "mai multe faze", "mai multe componente"], answer: "compoziție constantă", explanation: "Răspuns corect: compoziție constantă" },
+              { question: "Atomul conține:", type: "mc", options: ["doar electroni", "doar protoni", "protoni, neutroni, electroni", "molecule"], answer: "protoni, neutroni, electroni", explanation: "Răspuns corect: protoni, neutroni, electroni" },
+              { question: "Ionul negativ este:", type: "mc", options: ["cation", "proton", "anion", "electron"], answer: "anion", explanation: "Răspuns corect: anion" },
+              { question: "Transformările fizice:", type: "mc", options: ["schimbă compoziție", "nu produc substanțe noi", "sunt chimice", "sunt ireversibile"], answer: "nu produc substanțe noi", explanation: "Răspuns corect: nu produc substanțe noi" },
+              { question: "Aerul este:", type: "mc", options: ["substanță pură", "element", "amestec", "compus"], answer: "amestec", explanation: "Răspuns corect: amestec" },
+              { question: "Electronii au sarcină:", type: "mc", options: ["pozitivă", "negativă", "nulă", "dublă"], answer: "negativă", explanation: "Răspuns corect: negativă" },
+              { question: "Neutronii au sarcină:", type: "mc", options: ["pozitivă", "negativă", "nulă", "dublă"], answer: "nulă", explanation: "Răspuns corect: nulă" },
+              { question: "Molecula este unitatea:", type: "mc", options: ["atomului", "substanței", "ionului", "nucleului"], answer: "substanței", explanation: "Răspuns corect: substanței" },
+              { question: "Apa este:", type: "mc", options: ["element", "compus", "amestec", "soluție"], answer: "compus", explanation: "Răspuns corect: compus" },
+              { question: "Atomul este:", type: "mc", options: ["moleculă", "ion", "indivizibil chimic", "divizibil chimic"], answer: "indivizibil chimic", explanation: "Răspuns corect: indivizibil chimic" }
             ]
           }
         ]
       },
       {
-        domain: "Chimie anorganică - Completare",
+        domain: "CHIMIE – CLASA a VIII-a",
         subdomains: [
           {
-            subdomain: "Completare",
+            subdomain: "TEST 1 – REACȚII CHIMICE",
             questions: [
-              { 
-                question: "Masa molară a apei este de aproximativ ___ g/mol.", 
-                type: "text", 
-                answer: "18", 
-                explanation: "Masa molară a apei este 18 g/mol."
-              },
-              { 
-                question: "Substanțele care conduc curentul electric în soluție se numesc ___.", 
-                type: "text", 
-                answer: "electroliți", 
-                explanation: "Soluțiile conductoare conțin electroliți."
-              },
-              { 
-                question: "Oxizii metalelor alcaline sunt de natură ___.", 
-                type: "text", 
-                answer: "bazice", 
-                explanation: "Oxizii acestor metale sunt bazici."
-              },
-              { 
-                question: "Într-o reacție de neutralizare dintre un acid și o bază se formează _ și _.", 
-                type: "text-multi", 
-                answer: ["apă", "sare"], 
-                explanation: "Neutralizarea produce apă și sare."
-              },
-              { 
-                question: "Creta conține carbonat de calciu, a cărui formulă chimică este ___.", 
-                type: "text", 
-                answer: "CaCO3", 
-                explanation: "Carbonatul de calciu are formula CaCO₃."
-              }
+              { question: "Reacția de combinare are:", type: "mc", options: ["un reactant", "doi reactanți și un produs", "doi produși", "un produs fără reactanți"], answer: "doi reactanți și un produs", explanation: "Răspuns corect: doi reactanți și un produs" },
+              { question: "Arderea este reacție de:", type: "mc", options: ["substituție", "neutralizare", "oxidare", "descompunere"], answer: "oxidare", explanation: "Răspuns corect: oxidare" },
+              { question: "Oxizii sunt compuși care conțin:", type: "mc", options: ["hidrogen", "azot", "oxigen", "carbon"], answer: "oxigen", explanation: "Răspuns corect: oxigen" },
+              { question: "Neutralizarea are loc între:", type: "mc", options: ["acid și bază", "oxid și apă", "sare și apă", "metal și nemetal"], answer: "acid și bază", explanation: "Răspuns corect: acid și bază" },
+              { question: "pH < 7 indică soluție:", type: "mc", options: ["bazică", "neutră", "acidă", "saturată"], answer: "acidă", explanation: "Răspuns corect: acidă" },
+              { question: "Formula acidului clorhidric este:", type: "mc", options: ["HNO₃", "H₂SO₄", "HCl", "H₂CO₃"], answer: "HCl", explanation: "Răspuns corect: HCl" },
+              { question: "Hidroxizii sunt:", type: "mc", options: ["acizi", "baze", "săruri", "oxizi"], answer: "baze", explanation: "Răspuns corect: baze" },
+              { question: "Sărurile se obțin prin:", type: "mc", options: ["oxidare", "ardere", "neutralizare", "evaporare"], answer: "neutralizare", explanation: "Răspuns corect: neutralizare" },
+              { question: "Legea conservării masei afirmă că:", type: "mc", options: ["masa crește", "masa scade", "masa se conservă", "masa dispare"], answer: "masa se conservă", explanation: "Răspuns corect: masa se conservă" },
+              { question: "Apa este:", type: "mc", options: ["element", "oxid", "compus", "amestec"], answer: "compus", explanation: "Răspuns corect: compus" }
             ]
-          }
-        ]
-      },
-      {
-        domain: "Chimie organică - Completare",
-        subdomains: [
+          },
           {
-            subdomain: "Completare",
+            subdomain: "TEST 2 – ADEVĂRAT / FALS",
             questions: [
-              { 
-                question: "Alchenele sunt hidrocarburi nesaturate care conțin cel puțin o legătură ___.", 
-                type: "text", 
-                answer: "dublă", 
-                explanation: "Alchenele conțin o legătură dublă."
-              },
-              { 
-                question: "Propanul face parte din seria ___.", 
-                type: "text", 
-                answer: "alcanelor", 
-                explanation: "Propanul este un alcan."
-              },
-              { 
-                question: "Grupa funcțională caracteristică aldehidelor este ___.", 
-                type: "text", 
-                answer: "-CHO", 
-                explanation: "Aldehidele conțin grupa -CHO."
-              },
-              { 
-                question: "Reacția dintre un acid carboxilic și un alcool formează un compus numit ___.", 
-                type: "text", 
-                answer: "ester", 
-                explanation: "Se formează esteri prin condensare."
-              },
-              { 
-                question: "Benzina este un amestec de ___.", 
-                type: "text", 
-                answer: "hidrocarburi", 
-                explanation: "Benzina este compusă din diverse hidrocarburi."
-              }
+              { question: "Acizii au gust acru.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Bazele colorează turnesolul în roșu.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Oxizii metalici sunt bazici.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Toate reacțiile sunt reversibile.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Indicatorii arată pH-ul.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Hidroxizii sunt baze.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Apa este oxid.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Reacțiile chimice produc substanțe noi.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Energia nu participă în reacții.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Sărurile sunt compuși.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" }
             ]
-          }
-        ]
-      },
-      {
-        domain: "Reacții chimice și proprietăți - Completare",
-        subdomains: [
+          },
           {
-            subdomain: "Completare",
+            subdomain: "TEST 3 – GRILĂ (ACIZI)",
             questions: [
-              { 
-                question: "Substanțele care accelerează o reacție chimică fără a fi consumate se numesc ___.", 
-                type: "text", 
-                answer: "catalizatori", 
-                explanation: "Catalizatorii nu se consumă în reacție."
-              },
-              { 
-                question: "Într-o reacție de oxidare, o substanță __, iar într-o reacție de reducere, o substanță _.", 
-                type: "text-multi", 
-                answer: ["își pierde electroni", "își câștigă electroni"], 
-                explanation: "Oxidarea pierde electroni, reducerea îi câștigă."
-              },
-              { 
-                question: "Reacțiile exotermice eliberează __, în timp ce reacțiile endotermice absorb _.", 
-                type: "text-multi", 
-                answer: ["căldură", "căldură"], 
-                explanation: "Exotermice eliberează, endotermice absorbă căldură."
-              },
-              { 
-                question: "Factorii care influențează viteza unei reacții chimice sunt temperatura, concentrația, suprafața de contact și ___.", 
-                type: "text", 
-                answer: "presiunea", 
-                explanation: "Presiunea influențează viteza reacțiilor în sisteme gazoase."
-              },
-              { 
-                question: "Într-o soluție apoasă, un pH mai mic decât 7 indică un mediu __, iar un pH mai mare decât 7 indică un mediu _.", 
-                type: "text-multi", 
-                answer: ["acid", "bază"], 
-                explanation: "pH sub 7 e acid, peste 7 e bazic."
-              }
+              { question: "Acizii sunt substanțe care în soluție apoasă:", type: "mc", options: ["cedează ioni OH⁻", "cedează ioni H⁺", "nu se disociază", "formează oxizi"], answer: "cedează ioni H⁺", explanation: "Răspuns corect: cedează ioni H⁺" },
+              { question: "Formula acidului sulfuric este:", type: "mc", options: ["HCl", "HNO₃", "H₂SO₄", "H₂CO₃"], answer: "H₂SO₄", explanation: "Răspuns corect: H₂SO₄" },
+              { question: "Acidul clorhidric este:", type: "mc", options: ["acid slab", "acid tare", "bază", "sare"], answer: "acid tare", explanation: "Răspuns corect: acid tare" },
+              { question: "Acizii colorează turnesolul în:", type: "mc", options: ["albastru", "verde", "roșu", "galben"], answer: "roșu", explanation: "Răspuns corect: roșu" },
+              { question: "Acidul azotic are formula:", type: "mc", options: ["HNO₃", "H₂SO₄", "HCl", "H₂CO₃"], answer: "HNO₃", explanation: "Răspuns corect: HNO₃" },
+              { question: "pH-ul unui acid este:", type: "mc", options: ["mai mare decât 7", "egal cu 7", "mai mic decât 7", "egal cu 14"], answer: "mai mic decât 7", explanation: "Răspuns corect: mai mic decât 7" },
+              { question: "Acizii reacționează cu:", type: "mc", options: ["săruri", "baze", "oxizi acizi", "apă"], answer: "baze", explanation: "Răspuns corect: baze" },
+              { question: "Acidul carbonic este:", type: "mc", options: ["HCl", "H₂SO₄", "HNO₃", "H₂CO₃"], answer: "H₂CO₃", explanation: "Răspuns corect: H₂CO₃" },
+              { question: "Acizii sunt:", type: "mc", options: ["substanțe simple", "compuși", "amestecuri", "elemente"], answer: "compuși", explanation: "Răspuns corect: compuși" },
+              { question: "Acidul sulfuric conține:", type: "mc", options: ["hidrogen, sulf, oxigen", "hidrogen și oxigen", "sulf și oxigen", "hidrogen și sulf"], answer: "hidrogen, sulf, oxigen", explanation: "Răspuns corect: hidrogen, sulf, oxigen" }
             ]
-          }
-        ]
-      },
-      {
-        domain: "Chimie anorganică - Întrebări cu alegere multiplă",
-        subdomains: [
+          },
           {
-            subdomain: "Alegere multiplă",
+            subdomain: "TEST 4 – ADEVĂRAT / FALS (ACIZI)",
             questions: [
-              { 
-                question: "Ionul care are mai multe electroni decât protoni este ___.", 
-                type: "mc", 
-                options: ["cation", "anion", "atom neutru"], 
-                answer: "anion", 
-                explanation: "Un exces de electroni formează un anion."
-              },
-              { 
-                question: "Când un metal reacționează cu un acid, se formează o sare și ___.", 
-                type: "mc", 
-                options: ["apă", "hidrogen", "oxigen"], 
-                answer: "hidrogen", 
-                explanation: "Se eliberează hidrogen gazos."
-              },
-              { 
-                question: "Cel mai abundent gaz din atmosfera Pământului este ___.", 
-                type: "mc", 
-                options: ["oxigenul", "azotul", "dioxidul de carbon"], 
-                answer: "azotul", 
-                explanation: "Azotul reprezintă circa 78% din atmosferă."
-              },
-              { 
-                question: "Un exemplu de oxid acid este ___.", 
-                type: "mc", 
-                options: ["CaO", "CO₂", "Na₂O"], 
-                answer: "CO₂", 
-                explanation: "CO₂ este un oxid acid."
-              },
-              { 
-                question: "Un ion de calciu (Ca²⁺) are ___.", 
-                type: "mc", 
-                options: ["doi electroni în plus", "doi electroni în minus", "același număr de electroni ca și protoni"], 
-                answer: "doi electroni în minus", 
-                explanation: "Ionul Ca²⁺ rezultă din pierderea a doi electroni."
-              }
+              { question: "Acizii au gust acru.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Acizii colorează turnesolul în albastru.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Acidul clorhidric este un acid tare.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Acizii nu conțin hidrogen.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "pH-ul acizilor este sub 7.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Acidul sulfuric este un oxid.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Acizii reacționează cu bazele.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Acidul azotic are formula HNO₃.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Acizii sunt substanțe simple.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Acidul carbonic este un acid slab.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" }
             ]
-          }
-        ]
-      },
-      {
-        domain: "Chimie organică - Întrebări cu alegere multiplă",
-        subdomains: [
+          },
           {
-            subdomain: "Alegere multiplă",
+            subdomain: "TEST 5 – GRILĂ (BAZE)",
             questions: [
-              { 
-                question: "Formula moleculară a etanolului este ___.", 
-                type: "mc", 
-                options: ["C₂H₆O", "C₃H₈O", "C₂H₄O₂"], 
-                answer: "C₂H₆O", 
-                explanation: "Formula corectă a etanolului este C₂H₆O."
-              },
-              { 
-                question: "Reacția de ardere a unui hidrocarbură produce ___.", 
-                type: "mc", 
-                options: ["apă și dioxid de carbon", "oxigen și hydrogen", "acid sulfuric și amoniac"], 
-                answer: "apă și dioxid de carbon", 
-                explanation: "Arderea produce apă și CO₂."
-              },
-              { 
-                question: "Alchinele conțin cel puțin o legătură ___.", 
-                type: "mc", 
-                options: ["simplă", "dublă", "triplă"], 
-                answer: "triplă", 
-                explanation: "Alchinele conțin o legătură triplă."
-              },
-              { 
-                question: "Grupa funcțională a acizilor carboxilici este ___.", 
-                type: "mc", 
-                options: ["-OH", "-COOH", "-CHO"], 
-                answer: "-COOH", 
-                explanation: "Grupa -COOH este specifică acizilor carboxilici."
-              },
-              { 
-                question: "Reacția de polimerizare este specifică ___.", 
-                type: "mc", 
-                options: ["alcanilor", "alchenelor", "acizilor carboxilici"], 
-                answer: "alchenelor", 
-                explanation: "Polimerizarea se aplică alchenelor."
-              }
+              { question: "Bazele în soluție apoasă:", type: "mc", options: ["cedează H⁺", "cedează OH⁻", "nu se disociază", "formează acizi"], answer: "cedează OH⁻", explanation: "Răspuns corect: cedează OH⁻" },
+              { question: "Hidroxidul de sodiu are formula:", type: "mc", options: ["NaOH", "NaCl", "Na₂SO₄", "Na₂O"], answer: "NaOH", explanation: "Răspuns corect: NaOH" },
+              { question: "Bazele colorează turnesolul în:", type: "mc", options: ["roșu", "verde", "galben", "albastru"], answer: "albastru", explanation: "Răspuns corect: albastru" },
+              { question: "Hidroxizii sunt:", type: "mc", options: ["acizi", "baze", "săruri", "oxizi"], answer: "baze", explanation: "Răspuns corect: baze" },
+              { question: "pH-ul bazelor este:", type: "mc", options: ["< 7", "= 7", "> 7", "= 0"], answer: "> 7", explanation: "Răspuns corect: > 7" },
+              { question: "Hidroxidul de calciu este:", type: "mc", options: ["CaO", "CaCO₃", "Ca(OH)₂", "CaSO₄"], answer: "Ca(OH)₂", explanation: "Răspuns corect: Ca(OH)₂" },
+              { question: "Bazele reacționează cu:", type: "mc", options: ["săruri", "acizi", "oxizi bazici", "metale"], answer: "acizi", explanation: "Răspuns corect: acizi" },
+              { question: "Bazele sunt:", type: "mc", options: ["substanțe simple", "amestecuri", "compuși", "elemente"], answer: "compuși", explanation: "Răspuns corect: compuși" },
+              { question: "Hidroxidul de potasiu are formula:", type: "mc", options: ["K₂O", "KCl", "KOH", "K₂SO₄"], answer: "KOH", explanation: "Răspuns corect: KOH" },
+              { question: "Bazele tari sunt:", type: "mc", options: ["NaOH, KOH", "CaCO₃, NaCl", "HCl, H₂SO₄", "CO₂, SO₂"], answer: "NaOH, KOH", explanation: "Răspuns corect: NaOH, KOH" }
             ]
-          }
-        ]
-      },
-      {
-        domain: "Reacții chimice și proprietăți - Întrebări cu alegere multiplă",
-        subdomains: [
+          },
           {
-            subdomain: "Alegere multiplă",
+            subdomain: "TEST 6 – ADEVĂRAT / FALS (BAZE)",
             questions: [
-              { 
-                question: "Într-o reacție de disociere electrolitică, un compus ___.", 
-                type: "mc", 
-                options: ["formează molecule neutre", "se descompune în ioni", "reacționează cu oxigenul"], 
-                answer: "se descompune în ioni", 
-                explanation: "Compusul se descompune în ioni."
-              },
-              { 
-                question: "Într-o reacție de reducere, o substanță __.", 
-                type: "mc", 
-                options: ["pierde electroni", "câștigă electroni", "își păstrează electronii"], 
-                answer: "câștigă electroni", 
-                explanation: "Reducerea presupune câștigul de electroni."
-              },
-              { 
-                question: "Un indicator acid-bază este utilizat pentru a determina ___.", 
-                type: "mc", 
-                options: ["concentrația ionilor de sodiu", "pH-ul unei soluții", "temperatura unei reacții"], 
-                answer: "pH-ul unei soluții", 
-                explanation: "Indicatorii măsoară pH-ul soluțiilor."
-              },
-              { 
-                question: "Substanțele care accelerează o reacție fără a fi consumate se numesc ___.", 
-                type: "mc", 
-                options: ["reactanți", "catalizatori", "produși de reacție"], 
-                answer: "catalizatori", 
-                explanation: "Catalizatorii nu se consumă în reacție."
-              },
-              { 
-                question: "Apa pură are un pH de ___.", 
-                type: "mc", 
-                options: ["5", "7", "9"], 
-                answer: "7", 
-                explanation: "pH-ul apei pure este 7 (neutru)."
-              }
+              { question: "Bazele conțin gruparea OH⁻.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Bazele au pH sub 7.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "NaOH este bază tare.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Bazele colorează turnesolul în roșu.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Hidroxizii sunt baze.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Bazele nu reacționează cu acizii.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "KOH este hidroxid.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Bazele sunt oxizi.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Bazele sunt compuși.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Ca(OH)₂ este bază.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" }
             ]
-          }
-        ]
-      },
-      {
-        domain: "Videouri utile",
-        subdomains: [
+          },
           {
-            subdomain: "Videouri",
-            videos: [
-              {
-                title: "Reacții de hidroliză",
-                description: "Videoclipul explică procesul de hidroliză, prezentând exemple și aplicații practice.",
-                url: "https://www.youtube.com/watch?v=Web4VTXWGSM"
-              },
-              {
-                title: "Reacția de neutralizare în soluții apoase",
-                description: "Videoclipul demonstrează reacțiile de neutralizare între acizi și baze.",
-                url: "https://www.youtube.com/watch?v=WceOHS4S6Y4"
-              },
-              {
-                title: "Reacții de esterificare",
-                description: "Videoclipul explică formarea esterilor prin reacția dintre acizi și alcooli.",
-                url: "https://www.youtube.com/watch?v=B1-XSD2S9m0"
-              }
+            subdomain: "TEST 7 – GRILĂ (OXIZI)",
+            questions: [
+              { question: "Oxizii sunt compuși care conțin:", type: "mc", options: ["hidrogen", "oxigen", "azot", "carbon"], answer: "oxigen", explanation: "Răspuns corect: oxigen" },
+              { question: "Oxizii metalici sunt:", type: "mc", options: ["acizi", "bazici", "neutri", "săruri"], answer: "bazici", explanation: "Răspuns corect: bazici" },
+              { question: "Oxidul de calciu are formula:", type: "mc", options: ["CaCO₃", "CaO", "Ca(OH)₂", "CaSO₄"], answer: "CaO", explanation: "Răspuns corect: CaO" },
+              { question: "CO₂ este:", type: "mc", options: ["oxid bazic", "oxid acid", "sare", "bază"], answer: "oxid acid", explanation: "Răspuns corect: oxid acid" },
+              { question: "Oxizii reacționează cu:", type: "mc", options: ["apă", "acizi", "baze", "toate variantele"], answer: "toate variantele", explanation: "Răspuns corect: toate variantele" },
+              { question: "SO₂ este:", type: "mc", options: ["oxid bazic", "oxid acid", "bază", "sare"], answer: "oxid acid", explanation: "Răspuns corect: oxid acid" },
+              { question: "Oxizii sunt:", type: "mc", options: ["substanțe simple", "compuși", "amestecuri", "elemente"], answer: "compuși", explanation: "Răspuns corect: compuși" },
+              { question: "Oxizii metalici dau cu apa:", type: "mc", options: ["acizi", "baze", "săruri", "oxizi"], answer: "baze", explanation: "Răspuns corect: baze" },
+              { question: "Oxidul de magneziu este:", type: "mc", options: ["MgO", "Mg(OH)₂", "MgCO₃", "MgSO₄"], answer: "MgO", explanation: "Răspuns corect: MgO" },
+              { question: "Oxizii acizi provin din:", type: "mc", options: ["metale", "nemetale", "săruri", "baze"], answer: "nemetale", explanation: "Răspuns corect: nemetale" }
+            ]
+          },
+          {
+            subdomain: "TEST 8 – ADEVĂRAT / FALS (OXIZI)",
+            questions: [
+              { question: "Oxizii conțin oxigen.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Oxizii metalici sunt bazici.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "CO₂ este oxid acid.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "CaO este oxid acid.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Oxizii sunt substanțe simple.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Oxizii pot reacționa cu apa.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "SO₂ este oxid bazic.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Oxizii sunt compuși.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "MgO este oxid metalic.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Oxizii nu participă la reacții.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" }
+            ]
+          },
+          {
+            subdomain: "TEST 9 – GRILĂ (SĂRURI)",
+            questions: [
+              { question: "Sărurile se obțin prin:", type: "mc", options: ["oxidare", "ardere", "neutralizare", "topire"], answer: "neutralizare", explanation: "Răspuns corect: neutralizare" },
+              { question: "Sarea de bucătărie are formula:", type: "mc", options: ["Na₂SO₄", "NaCl", "KCl", "CaCO₃"], answer: "NaCl", explanation: "Răspuns corect: NaCl" },
+              { question: "Sărurile sunt:", type: "mc", options: ["acizi", "baze", "compuși", "elemente"], answer: "compuși", explanation: "Răspuns corect: compuși" },
+              { question: "Neutralizarea este reacția dintre:", type: "mc", options: ["oxid + apă", "acid + bază", "metal + nemetal", "sare + apă"], answer: "acid + bază", explanation: "Răspuns corect: acid + bază" },
+              { question: "Na₂SO₄ este:", type: "mc", options: ["acid", "bază", "sare", "oxid"], answer: "sare", explanation: "Răspuns corect: sare" },
+              { question: "Sărurile pot fi:", type: "mc", options: ["doar solide", "doar lichide", "solide sau dizolvate", "doar gaze"], answer: "solide sau dizolvate", explanation: "Răspuns corect: solide sau dizolvate" },
+              { question: "CaCO₃ este:", type: "mc", options: ["bază", "sare", "oxid", "acid"], answer: "sare", explanation: "Răspuns corect: sare" },
+              { question: "Sărurile provin din:", type: "mc", options: ["oxizi", "neutralizare", "topire", "evaporare"], answer: "neutralizare", explanation: "Răspuns corect: neutralizare" },
+              { question: "KNO₃ este:", type: "mc", options: ["acid", "bază", "sare", "oxid"], answer: "sare", explanation: "Răspuns corect: sare" },
+              { question: "Sărurile sunt:", type: "mc", options: ["substanțe simple", "amestecuri", "compuși", "elemente"], answer: "compuși", explanation: "Răspuns corect: compuși" }
+            ]
+          },
+          {
+            subdomain: "TEST 10 – EVALUARE FINALĂ",
+            questions: [
+              { question: "Acizii conțin hidrogen.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Bazele conțin OH⁻.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Oxizii conțin oxigen.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Sărurile sunt substanțe simple.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Neutralizarea produce sare și apă.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "pH = 7 indică soluție neutră.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Bazele au pH sub 7.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" },
+              { question: "Oxizii metalici sunt bazici.", type: "tf", answer: "Adevărat", explanation: "Răspuns corect: Adevărat" },
+              { question: "Reacțiile chimice nu produc substanțe noi.", type: "tf", answer: "Fals", explanation: "Răspuns corect: Fals" }
             ]
           }
         ]
       }
     ];
-    
+
     // Generează sidebar-ul din domenii și subdomenii
     function generateSidebar() {
       const domainList = document.getElementById("domainList");
